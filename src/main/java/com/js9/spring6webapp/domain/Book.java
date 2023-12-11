@@ -15,6 +15,12 @@ public class Book {
     private String title;
     private String isbn;
 
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Publisher publisher;
+
+
+
+
     @ManyToMany
     @JoinTable(name = "book_author",
             joinColumns = @JoinColumn(name = "book_id"),
@@ -53,6 +59,13 @@ public class Book {
         this.authors = authors;
     }
 
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
 
     @Override
     public String toString() {
